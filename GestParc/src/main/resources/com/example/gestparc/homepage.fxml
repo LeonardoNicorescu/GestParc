@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #e5e5e5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestparc.HomepageController">
+   <top>
+      <AnchorPane fx:id="navbar" prefHeight="58.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom right, #003049, #1e6091);" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#adffe5" layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GestParc">
+               <font>
+                  <Font name="Eras Demi ITC" size="25.0" />
+               </font>
+            </Text>
+            <HBox alignment="BOTTOM_LEFT" layoutX="644.0" prefHeight="62.0" prefWidth="286.0">
+               <children>
+                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#onClickHome" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: transparent; -fx-border-color: #adffe5; -fx-border-width: 1.5;" text="Accueil" textFill="#adffe5">
+                     <font>
+                        <Font name="Eras Demi ITC" size="14.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.4" />
+                     </effect>
+                  </Button>
+                  <Button fx:id="usersButton" mnemonicParsing="false" onAction="#onClickUsers" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: transparent; -fx-border-color: #adffe5; -fx-border-width: 1.5;" text="Utilisateurs" textFill="#adffe5">
+                     <font>
+                        <Font name="Eras Demi ITC" size="14.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.4" />
+                     </effect>
+                  </Button>
+                  <Button fx:id="accountbutton" mnemonicParsing="false" onAction="#onClickAccountForm" prefHeight="31.0" prefWidth="110.0" style="-fx-border-width: 1.5; -fx-background-color: transparent; -fx-border-color: #adffe5;" text="Mon compte" textFill="#adffe5">
+                     <font>
+                        <Font name="Eras Demi ITC" size="14.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.4" />
+                     </effect>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane fx:id="home" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e5e5e5;" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="55.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machines:">
+               <font>
+                  <Font name="Eras Demi ITC" size="18.0" />
+               </font>
+            </Text>
+            <TableView fx:id="deviceTableView" layoutX="55.0" layoutY="141.0" prefHeight="482.0" prefWidth="790.0" style="-fx-border-color: #003049;">
+               <columns>
+                  <TableColumn fx:id="idColumn" prefWidth="50" text="ID">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="nameColumn" prefWidth="150" text="Nom:">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="serialNumberColumn" prefWidth="150" text="Numéro de série">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="serialNumber" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="operatingSystemColumn" prefWidth="150" text="Système d'exploitation">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="operatingSystem" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="modelColumn" prefWidth="150" text="Modèle">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="model" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="userUsernameColumn" prefWidth="150" text="Utilisateur">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="userUsername" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+            <TextField fx:id="researchDevice" layoutX="55.0" layoutY="99.0" prefHeight="26.0" prefWidth="354.0" promptText="Recherche..." />
+            <HBox layoutX="424.0" layoutY="98.0" prefHeight="0.0" prefWidth="502.0" spacing="15.0">
+               <children>
+                  <Button fx:id="addDeviceForm" mnemonicParsing="false" onAction="#onClickAddDeviceForm" style="-fx-background-color: #003049;" text="Ajouter" textFill="#adffe5">
+                     <font>
+                        <Font name="Eras Demi ITC" size="15.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.4" />
+                     </effect>
+                  </Button>
+                  <Button fx:id="deleteDeviceButton" mnemonicParsing="false" onAction="#onClickDeleteDevice" style="-fx-background-color: #d00000;" text="Supprimer" textFill="#adffe5">
+                     <font>
+                        <Font name="Eras Demi ITC" size="15.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.4" />
+                     </effect>
+                  </Button>
+                  <Button fx:id="affectDeviceButton" mnemonicParsing="false" onAction="#onClickAffectDevice" style="-fx-background-color: green;" text="Affecter" textFill="#adffe5">
+                     <font>
+                        <Font name="Eras Demi ITC" size="15.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.4" />
+                     </effect>
+                  </Button>
+                  <Button fx:id="updateDeviceButton" mnemonicParsing="false" onAction="#onClickUpdateDeviceForm" style="-fx-background-color: #7200fa;" text="Modifier" textFill="#adffe5">
+                     <font>
+                        <Font name="Eras Demi ITC" size="15.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.4" />
+                     </effect>
+                  </Button>
+               </children>
+            </HBox>
+
+         </children></AnchorPane>
+   </center>
+</BorderPane>
