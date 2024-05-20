@@ -100,7 +100,7 @@ public class UserManagementController {
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         roleColumn.setCellValueFactory(cellData -> {
             String role = cellData.getValue().getRole();
-            return role.equals("1") ? new javafx.beans.property.SimpleStringProperty("Superviseur") :
+            return role.equals("1") ? new javafx.beans.property.SimpleStringProperty("Utilisateur") :
                     new javafx.beans.property.SimpleStringProperty("Admin");
         });
         devicesCountColumn.setCellValueFactory(cellData -> {

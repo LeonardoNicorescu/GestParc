@@ -64,7 +64,7 @@ public class UserController {
     public void initialize() {
         users = new Users();
         devices = new Devices();
-        updateUserRole.getItems().addAll("Superviseur", "Admin");
+        updateUserRole.getItems().addAll("Utilisateur", "Admin");
     }
     public void setSelectedUser(User user) {
         this.selectedUser = user;
@@ -72,7 +72,7 @@ public class UserController {
             updateUserFirstName.setText(user.getFirstName());
             updateUserLastName.setText(user.getLastName());
             updateUserUsername.setText(user.getUsername());
-            updateUserRole.setPromptText(user.getRole().equals("1") ? "Superviseur" : "Admin");
+            updateUserRole.setPromptText(user.getRole().equals("1") ? "Utilisateur" : "Admin");
             configureDeviceTableColumns();
             loadUserDevices(user.getId());
         }
@@ -118,7 +118,7 @@ public class UserController {
                 String userId = new Users().getIdByUsername(username);
                 selectedDevice.setUserUsername(userId);
                 devices.updateDevice(selectedDevice);
-                loadUserDevices(selectedUser.getId()); // Recharger les appareils de l'utilisateur sélectionné
+                loadUserDevices(selectedUser.getId());
                 updateUserDeviceErrorText.setFill(Color.GREEN);
                 updateUserDeviceErrorText.setText("Machine modifiée avec succès");
             });
@@ -132,7 +132,7 @@ public class UserController {
             String firstName = updateUserFirstName.getText();
             String lastName = updateUserLastName.getText();
             String username = updateUserUsername.getText();
-            String role = updateUserRole.getValue().equals("Superviseur") ? "1" : "2";
+            String role = updateUserRole.getValue().equals("Utilisateur") ? "1" : "2";
 
             if (!firstName.isEmpty() && !lastName.isEmpty() && !username.isEmpty()) {
                 selectedUser.setFirstName(firstName);

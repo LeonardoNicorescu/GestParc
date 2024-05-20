@@ -95,7 +95,7 @@ public class LoginController {
                 Users users = new Users();
                 User loggedInUser = users.getUserByUsername(username);
                 if (loggedInUser != null) {
-                    Session.setUser(loggedInUser); // Stocker l'utilisateur connecté dans la session
+                    Session.setUser(loggedInUser);
                     GestParc gestParc = new GestParc();
                     try {
                         gestParc.openGestParcScene((Stage) usernameTextField.getScene().getWindow());
@@ -103,7 +103,6 @@ public class LoginController {
                         throw new RuntimeException(e);
                     }
                 } else {
-                    // Gérer le cas où l'utilisateur n'est pas trouvé
                     loginerrorText.setText("Identifiants erronés");
                 }
             } else if (count == 0 ) {
@@ -124,22 +123,25 @@ public class LoginController {
             Login user = new Login();
             if (user.userExists(username)) {
                 registererrorText.setText("Nom d'utilisateur non valide");
-            } else if (user.register(firstName, lastName, username, password)) {
-                Users users = new Users();
-                User registeredUser = users.getUserByUsername(username);
-                if (registeredUser != null) {
-                    Session.setUser(registeredUser); // Stocker l'utilisateur connecté dans la session
-                    try {
-                        GestParc gestParc = new GestParc();
-                        gestParc.openGestParcScene((Stage) usernameTextField.getScene().getWindow());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+            } else {
+                boolean registrationSuccess = user.register(firstName, lastName, username, password);
+                if (registrationSuccess) {
+                    Users users = new Users();
+                    User registeredUser = users.getUserByUsername(username);
+                    if (registeredUser != null) {
+                        Session.setUser(registeredUser);
+                        try {
+                            GestParc gestParc = new GestParc();
+                            gestParc.openGestParcScene((Stage) usernameTextField.getScene().getWindow());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else {
+                        registererrorText.setText("Erreur lors de l'inscription");
                     }
                 } else {
                     registererrorText.setText("Erreur lors de l'inscription");
                 }
-            } else {
-                registererrorText.setText("Erreur lors de l'inscription");
             }
         }
     }

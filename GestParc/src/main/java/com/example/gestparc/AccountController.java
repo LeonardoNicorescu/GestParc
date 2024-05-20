@@ -67,11 +67,8 @@ public class AccountController {
                 loggedInUser.setFirstName(firstName);
                 loggedInUser.setLastName(lastName);
                 loggedInUser.setUsername(username);
-
-                // Mettre à jour l'utilisateur dans la base de données
                 Users users = new Users();
                 users.updateUser(loggedInUser);
-
                 updateUserErrorText.setFill(Color.GREEN);
                 updateUserErrorText.setText("Les informations du compte ont été mises à jour avec succès.");
             } else {

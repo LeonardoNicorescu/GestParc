@@ -53,7 +53,6 @@ public class Devices {
         String message = "";
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/gestparc", "root", "");
-            // Récupérer l'ID de l'utilisateur à partir de son nom d'utilisateur
             String getUserIdQuery = "SELECT id FROM users WHERE username = ?";
             stmt = conn.prepareStatement(getUserIdQuery);
             stmt.setString(1, username);
@@ -65,7 +64,6 @@ public class Devices {
                 message = "Utilisateur non existant";
                 return(message);
             }
-            // Insérer une nouvelle entrée dans la table devices avec l'ID de l'utilisateur
             String insertDeviceQuery = "INSERT INTO devices (name, serial_number, operating_system, model, user_id) VALUES (?, ?, ?, ?, ?)";
             stmt = conn.prepareStatement(insertDeviceQuery);
             stmt.setString(1, name);

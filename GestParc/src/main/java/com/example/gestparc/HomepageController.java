@@ -194,9 +194,7 @@ public class HomepageController {
 
             ButtonType buttonTypeYes = new ButtonType("Oui");
             ButtonType buttonTypeCancel = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
-
             alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeCancel);
-
             alert.showAndWait().ifPresent(buttonType -> {
                 if (buttonType == buttonTypeYes) {
                     devices.deleteDevice(selectedDevice);

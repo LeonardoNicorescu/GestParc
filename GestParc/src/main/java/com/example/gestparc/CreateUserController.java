@@ -47,7 +47,7 @@ public class CreateUserController {
     private Text updateUserErrorText;
 
     public void initialize(){
-        createUserRole.getItems().addAll("Superviseur", "Admin");
+        createUserRole.getItems().addAll("Utilisateur", "Admin");
 
     }
 
@@ -67,7 +67,7 @@ public class CreateUserController {
             if (users.userExists(username)) {
                 createUserErrorText.setText("Nom d'utilisateur déjà pris");
             } else {
-                User newUser = new User(id, firstName, lastName, username, password, role.equals("Superviseur") ? "1" : "2");
+                User newUser = new User(id, firstName, lastName, username, password, role.equals("Utilisateur") ? "1" : "2");
                 if (users.register(newUser)) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("users.fxml"));
                     try {
