@@ -93,7 +93,6 @@ public class Login {
             stmt.setString(2, lastName);
             stmt.setString(3, username);
             stmt.setString(4, hashedPassword);
-            System.out.println(hashedPassword);
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
