@@ -21,12 +21,12 @@ public class Login {
             if (rs.next()) {
                 String hashedPassword = rs.getString("password");
                 if (BCrypt.checkpw(password, hashedPassword)) {
-                    return 1; // Credentials are correct
+                    return 1; 
                 } else {
-                    return 0; // Password is incorrect
+                    return 0; 
                 }
             } else {
-                return 0; // Username not found
+                return 0;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
